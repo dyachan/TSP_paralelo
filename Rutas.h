@@ -9,19 +9,16 @@
 
 namespace Rutas
 {
+    extern int cantidad;
+
     void iniciar(int max = 0);
     void finalizar();
-    void mostrarPosicion(int i);
-    float distancia(int origen, int destino);
-    void mostrarDistancia(int origen, int destino);
 
-    bool enRuta(int c, std::vector<int> ruta);
-    int masCercano(int origen, std::vector<int> tabu);
+    void generarRutas(int inicio, int fin = -1);
 
-    void generarRutas(int inicio, int fin);
-    void mostrarRutas();
+    float costoRuta(int ruta);
 
-    float costoRuta(std::vector<int> ruta);
+    int rutaMenor();
 };
 
 #endif /* RUTAS_H_ */
