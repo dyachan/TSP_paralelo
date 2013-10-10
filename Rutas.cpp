@@ -15,7 +15,7 @@ namespace Rutas
     float *X;
     float *Y;
 
-    int **rutas;
+    static int **rutas;
 
     void agregarARuta(int ruta, int posicion, int ciudad)
     {
@@ -123,7 +123,7 @@ namespace Rutas
     float costo = distancia(obtenerDeRuta(ruta, cantidad-1), obtenerDeRuta(ruta, 0));
     for(int c = 1; c < cantidad; c++)
       costo += distancia(obtenerDeRuta(ruta, c-1), obtenerDeRuta(ruta, c));
-    std::cout << "para ruta " << ruta << " el costo es " << costo << std::endl;
+//    std::cout << "para ruta " << ruta << " el costo es " << costo << std::endl;
     return costo;
   }
 
@@ -140,4 +140,9 @@ namespace Rutas
     return r_menor;
   }
 
+  void mostrarRuta(int ruta)
+  {
+    for(int c = 0; c < cantidad; c++)
+      std::cout << obtenerDeRuta(ruta, c) << ".";
+  }
 }
