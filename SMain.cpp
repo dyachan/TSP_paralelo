@@ -9,26 +9,31 @@
 
 int main(int argc, char* argv[])
 {
-  using namespace Rutas;
+  Rutas *r;
   if(argc > 1)
   {
-    iniciar(atoi(argv[1]));
-    generarRutas(0);
+    r = new Rutas(atoi(argv[1]));
+    r->generarRutas();
   }
   else
   {
-    iniciar();
-    generarRutas(0);
+    r = new Rutas();
+    r->generarRutas();
   }
-
-//  for(int i = 0; i < cantidad; i++)
-//    costoRuta(i);
-  int m = rutaMenor();
-  std::cout << "la ruta menor es " << m << std::endl;
+/*
+  for(int i = 0; i < r->cantidad; i++)
+  {
+    std::cout << "ruta " << i << ": ";
+    r->mostrarRuta(i);
+    std::cout << " costo " << r->costoRuta(i) << std::endl;
+  }
+*/
+  int m = r->rutaMenor();
+  std::cout << "la ruta menor es " << m << " con un costo de " << r->costoRuta(m) << std::endl;
   std::cout << "con la ruta: ";
-  mostrarRuta(m);
+  r->mostrarRuta(m);
   std::cout << std::endl;
 
-  finalizar();
+  delete r;
   return 0;
 }
